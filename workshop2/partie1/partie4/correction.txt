@@ -1,0 +1,40 @@
+#include "pch.h"
+#include <iostream>
+#include <string>
+using namespace System;
+using namespace std;
+
+class B
+{​
+    public:
+        void recevoir(string message)
+        {​
+            cout << "Réception du signal : " << message << endl;
+        }​
+}​;
+
+
+typedef void (B::*ptr)(string); //définition du pointeur de fonction + c'éarion du type ptr
+ptr signal = &B::recevoir; //définition de l'adresse de la méthode à pointer
+
+class A
+{​
+    public:
+        void envoyer(B o, string message)
+        {​
+            (o.*signal)(message); //o.recevoir(message)
+        }​
+
+}​;
+
+void main(void)
+{​
+    int pause;
+    A a;
+    B b,c;
+    
+    a.envoyer(b,"message1");
+    a.envoyer(c,"message2");
+
+    cin >> pause;
+}​
