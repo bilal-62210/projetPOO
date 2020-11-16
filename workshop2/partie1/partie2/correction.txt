@@ -1,0 +1,87 @@
+
+#include <iostream>
+
+using namespace std;
+
+class A
+{​
+    public:
+    virtual void m(void)
+    {​
+        cout << "A::m()" << endl;
+    }​
+}​;
+
+class B : public A
+{​
+    public:
+    void m(void)
+    {​
+        cout << "B::m()" << endl;
+    }​
+}​;
+
+class stockObj
+{​
+    private:
+        A** tab;
+        int taille;
+        int index;
+
+    public:
+        stockObj(int taille)
+        {​
+            this->taille = taille;
+            this->index=0;
+            tab = new A*[this->taille];
+        }​
+        void add(A* obj)
+        {​
+            tab[this->index]=obj;
+            this->index++
+        }​
+        void add(A* obj, int index)
+        {​
+            tab[index]=obj;
+        }​
+        void affiche(void)
+        {​
+            int i;
+            for (i = 0; i < this->taille; i++)
+            {​
+                tab[i]->m();
+            }​
+        }​
+        ~stockObj(void)
+        {​
+            delete *tab;
+        }​
+}​;
+    
+void main(void)
+{​
+    int pause;
+    A* o1;
+    A* o2;
+    A* o3;
+    stockObj* entrepot;
+
+    o1 = new A();
+    o2 = new A();
+    o3 = new B();
+    entrepot= new stockObj(3);
+
+    entrepot->add(o1);
+    entrepot->add(o2);
+    entrepot->add(o3);
+
+    entrepot->affiche();
+
+    delete o2;
+    o2 = new B();
+    entrepot->add(o2,1);
+    entrepot->affiche();
+    
+    delete entrepot;
+    cin >> pause;
+}​
