@@ -1,5 +1,5 @@
 #include "class.hpp"
-#include "fonction.cpp"
+#include "fonctionm.cpp"
 #include <iostream>
 
 using namespace std;
@@ -14,6 +14,6 @@ int main()
     
     delete o1;
     delete o2;
-    
+
 
 }
