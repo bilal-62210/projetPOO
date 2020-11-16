@@ -5,7 +5,7 @@ class A
     protected:
         int x;
     public:
-         void m(void);
+         virtual void m(void);
         
 };
 
