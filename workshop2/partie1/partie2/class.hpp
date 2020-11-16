@@ -17,11 +17,11 @@ class B : public A
         void m(void);
 };
 
-class stockage : public A, public B
+class stockage : public B
 {
         protected:
 
         public: 
             void ajouter(void);
 
-}
+};
