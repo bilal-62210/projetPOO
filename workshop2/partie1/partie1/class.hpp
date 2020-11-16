@@ -16,3 +16,4 @@ class B : public A
     public:
         void m(void);
 };
+
